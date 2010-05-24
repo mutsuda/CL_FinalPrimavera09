@@ -1,0 +1,31 @@
+Program
+  Vars
+    a Struct
+      b Bool
+      c Int
+    EndStruct
+    d Array[1] Of Bool
+    e Struct
+      f Int
+      g Int
+    EndStruct
+    h Array[2] Of Int
+    i Struct
+      j Array[2] Of Int
+      k Struct
+        l Int
+        m Int
+      EndStruct
+    EndStruct
+    x Bool
+    y Int
+  EndVars
+
+  i.j[0] := 6
+  i.j[1] := 7
+  i.k.l := 8
+  i.k.m := 9
+  << h, e >> := i
+  Write("e2:") Write(e.f) Write(" ") WriteLn(e.g)
+EndProgram
+

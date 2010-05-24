@@ -1,0 +1,26 @@
+Tmake all
+v7
+r0
+t292630157.656492
+cCheck dependencies
+cExternalBuildToolExecution "make all"
+
+N/var/folders/nv/nvBvjrYREnu1zto2ByaypE+++TI/-Tmp-/9D46708811712E8A0092FE51
+c000000004BC0F70B0000000000000015
+t1270937355
+s21
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies292630155#292630155#0(0"0(0#1#0"3977014063475472384#0"0#
+
+CExternalBuildToolExecution "make all"
+s292630155.796765
+e292630157.656286
+r1
+xExternalBuildToolExecution
+xmake all
+og++ -I/usr/local/pccts-1.33/include -I/usr/include/pccts -Wno-write-strings -c -o semantic.o semantic.cc
+og++ -o cl cl.o codegen.o codegest.o ptype.o semantic.o symtab.o scan.o err.o util.o
+lSLF07#2@23"Run external build tool292630155#292630157#0(189"g++ -I/usr/local/pccts-1.33/include -I/usr/include/pccts -Wno-write-strings -c -o semantic.o semantic.ccg++ -o cl cl.o codegen.o codegest.o ptype.o semantic.o symtab.o scan.o err.o util.o2(13@105"g++ -I/usr/local/pccts-1.33/include -I/usr/include/pccts -Wno-write-strings -c -o semantic.o semantic.cc292630156#0#105#0(1@0"0(13@84"g++ -o cl cl.o codegen.o codegest.o ptype.o semantic.o symtab.o scan.o err.o util.o292630157#105#84#0(1@0"0(0#0#0"18446744073709551615#147"    cd /Users/mmutsuda/Documents/FIB/CL/Practica    setenv ACTION     /var/folders/nv/nvBvjrYREnu1zto2ByaypE+++TI/-Tmp-/9D46708811712E8A0092FE510#
+

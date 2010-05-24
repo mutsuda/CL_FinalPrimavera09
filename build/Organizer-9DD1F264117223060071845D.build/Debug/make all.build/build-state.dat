@@ -1,0 +1,25 @@
+Tmake all
+v7
+r0
+t292692744.271716
+cCheck dependencies
+cExternalBuildToolExecution "make all"
+
+N/var/folders/nv/nvBvjrYREnu1zto2ByaypE+++TI/-Tmp-/9DD1F264117223060071845D
+c000000004BC1EB870000000000000015
+t1270999943
+s21
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies292692743#292692743#0(0"0(0#1#0"3977014046262183424#0"0#
+
+CExternalBuildToolExecution "make all"
+s292692743.845321
+e292692744.271642
+r1
+xExternalBuildToolExecution
+xmake all
+omake: Nothing to be done for `all'.
+lSLF07#2@23"Run external build tool292692743#292692744#0(36"make: Nothing to be done for `all'.1(13@36"make: Nothing to be done for `all'.292692744#0#36#0(1@0"0(0#0#0"18446744073709551615#147"    cd /Users/mmutsuda/Documents/FIB/CL/Practica    setenv ACTION     /var/folders/nv/nvBvjrYREnu1zto2ByaypE+++TI/-Tmp-/9DD1F264117223060071845D0#
+

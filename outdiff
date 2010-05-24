@@ -1,0 +1,2125 @@
+jp0
+jp1
+0a1,43
+> 
+> 
+>   1: PROGRAM
+>   2:   VARS
+>   3:     x int
+>   4:     y int
+>   5:     p bool
+>   6:   ENDVARS
+>   7:   PROCEDURE q()
+>   8:     PROCEDURE p(val p int)
+>   9:       p:=3
+>  10:       p:=true
+>  11:     ENDPROCEDURE
+>  12:     p:=3
+>  13:     p(3)
+>  14:     p(true)
+>  15:   ENDPROCEDURE
+>  16:   PROCEDURE r(ref p int)
+>  17:     PROCEDURE p(val r int)
+>  18:       r:=4
+>  19:       r(3)
+>  20:       r(p)
+>  21:       r(y)
+>  22:       r(x)
+>  23:       p:=3
+>  24:       p:=true
+>  25:       p(3)
+>  26:     ENDPROCEDURE
+>  27:     r:=3
+>  28:     r(3)
+>  29:     r(p())
+>  30:     r(y)
+>  31:     r(x)
+>  32:     p:=3
+>  33:     p:=true
+>  34:     p(p)
+>  35:   ENDPROCEDURE
+>  36:   p:=3
+>  37:   p:=true
+>  38:   p(3)
+>  39: ENDPROGRAM
+> 
+> 
+jp2
+jp3
+jp4
+jp5
+jp6
+jp7
+jp8
+jp9
+jp-1
+jp10
+jp11
+jp12
+337a338
+> L. 33: Identifier a is undeclared.
+jp13
+jp1~
+15c15
+<  13:     p(3)
+---
+>  13:     -p(3)
+76,80c76,81
+<     |      |                  |    \__intconst(3)
+<     |      |                  \__(
+<     |      |                  |   \__ident(p)
+<     |      |                  |   \__list
+<     |      |                  |          \__intconst(3)
+---
+>     |      |                  |    \__-
+>     |      |                  |        \__intconst(3)
+>     |      |                  |        \__(
+>     |      |                  |            \__ident(p)
+>     |      |                  |            \__list
+>     |      |                  |                   \__intconst(3)
+178a180
+> L. 13: Operator ( must be applied to a function in an expression.
+jp20
+jp21
+82a83,84
+> BIG PROBLEM! No case defined for kind true
+> BIG PROBLEM! No case defined for kind false
+100d101
+<     iload 1 t1
+108d108
+<     iload 0 t1
+131c131,132
+< 1
+---
+> 5
+> 4
+133d133
+< 0
+jp22
+73,105d72
+<   etiq while_1
+<     load _I t0
+<     iload 10 t1
+<     lesi t0 t1 t0
+<     fjmp t0 endwhile_1
+<     load _I t0
+<     iload 2 t1
+<     load _I t2
+<     iload 2 t3
+<     divi t2 t3 t2
+<     muli t1 t2 t1
+<     subi t0 t1 t0
+<     iload 0 t1
+<     equi t0 t1 t0
+<     fjmp t0 else_1
+<     load _I t0
+<     wrii t0
+<     wrln
+<     ujmp endif_1
+<   etiq else_1
+<     iload 2 t0
+<     load _I t1
+<     muli t0 t1 t0
+<     wrii t0
+<     wrln
+<   etiq endif_1
+<     aload _I t0
+<     load _I t1
+<     iload 1 t2
+<     addi t1 t2 t1
+<     stor t1 t0
+<     ujmp while_1
+<   etiq endwhile_1
+110,118d76
+< 2
+< 2
+< 6
+< 4
+< 10
+< 6
+< 14
+< 8
+< 18
+jp23
+60a61,62
+> BIG PROBLEM! No case defined for kind [
+> BIG PROBLEM! No case defined for kind [
+75,80d76
+<     aload _A t0
+<     aload _S t1
+<     addi t1 4 t1
+<     load t1 t1
+<     muli t1 8 t1
+<     addi t0 t1 t0
+83,86d78
+<     aload _A t0
+<     iload 5 t1
+<     muli t1 8 t1
+<     addi t0 t1 t0
+95c87
+< 5
+---
+> Execution error: out of memory access.
+jp24
+101a102,103
+> BIG PROBLEM! No case defined for kind true
+> BIG PROBLEM! No case defined for kind false
+120d121
+<     iload 1 t1
+128d128
+<     iload 0 t1
+130,147d129
+<     load _X t0
+<     iload 3 t1
+<     muli t0 t1 t0
+<     iload 10 t1
+<     grti t0 t1 t0
+<     aload _S t1
+<     addi t1 4 t1
+<     load t1 t1
+<     land t0 t1 t0
+<     fjmp t0 endif_1
+<     aload _S t0
+<     addi t0 0 t0
+<     load _X t1
+<     stor t1 t0
+<     aload _S1 t0
+<     aload _S t1
+<     copy t1 t0 8
+<   etiq endif_1
+162,163c144,145
+< 5
+< 1
+---
+> 4
+> 4
+jp25
+129,249c129,132
+< Generating code:
+< program
+<   parameters
+<     static_link
+<   endparameters
+< 
+<   variables
+<     _Y 4
+<     _X 4
+<   endvariables
+< 
+<     aload _Y t0
+<     iload 3 t1
+<     stor t1 t0
+<     aload _X t0
+<     iload 0 t1
+<     stor t1 t0
+<     iload 2 t0
+<     iload 3 t1
+<     muli t0 t1 t0
+<     iload 1 t1
+<     addi t0 t1 t0
+<     pushparam t0
+<     aload _Y t0
+<     pushparam t0
+<     aload static_link t0
+<     pushparam t0
+<     call program_P0
+<     killparam
+<     killparam
+<     killparam
+<     load _Y t0
+<     wrii t0
+<     wris "  "
+<     load _X t0
+<     wrii t0
+<     wrln
+<     stop
+< endprogram
+< 
+< subroutine program_P0_P1
+<   parameters
+<     _V1
+<     _R1
+<     _R2
+<     static_link
+<   endparameters
+< 
+<   variables
+<     _Y1 4
+<     _X1 4
+<   endvariables
+< 
+<     load _R1 t0
+<     load _V1 t1
+<     stor t1 t0
+<     load static_link t0
+<     addi t0 offset(program_P0:_V0) t0
+<     iload 10 t1
+<     stor t1 t0
+<     load static_link t0
+<     load t0 t0
+<     addi t0 offset(program:_X) t0
+<     load static_link t1
+<     addi t1 offset(program_P0:_V0) t1
+<     load t1 t1
+<     load _R2 t2
+<     equi t1 t2 t1
+<     load static_link t2
+<     addi t2 offset(program_P0:_V0) t2
+<     load t2 t2
+<     load _R1 t3
+<     load t3 t3
+<     load static_link t4
+<     addi t4 offset(program_P0:_R0) t4
+<     load t4 t4
+<     load t4 t4
+<     addi t3 t4 t3
+<     equi t2 t3 t2
+<     land t1 t2 t1
+<     lnot t1 t1
+<     stor t1 t0
+<     retu
+< endsubroutine
+< 
+< subroutine program_P0
+<   parameters
+<     _V0
+<     _R0
+<     static_link
+<   endparameters
+< 
+<   variables
+<   endvariables
+< 
+<     load _V0 t0
+<     pushparam t0
+<     load _R0 t0
+<     pushparam t0
+<     load _R0 t0
+<     load t0 t0
+<     pushparam t0
+<     aload static_link t0
+<     pushparam t0
+<     call program_P0_P1
+<     killparam
+<     killparam
+<     killparam
+<     killparam
+<     load _V0 t0
+<     wrii t0
+<     wris "  "
+<     load _R0 t0
+<     load t0 t0
+<     wrii t0
+<     wris "  "
+<     retu
+< endsubroutine
+< 
+< Executing code:
+< 10  7  7  1
+---
+> L. 18: Basic type required in write.
+> L. 20: Basic type required in write.
+> L. 26: Basic type required in write.
+> There are errors: no code generated
+jp26
+107,204c107,110
+< Generating code:
+< program
+<   parameters
+<     static_link
+<   endparameters
+< 
+<   variables
+<     _X 4
+<     _Y 4
+<   endvariables
+< 
+<     aload _X t0
+<     iload 1 t1
+<     stor t1 t0
+<   etiq while_1
+<     load _X t0
+<     iload 10 t1
+<     lesi t0 t1 t0
+<     fjmp t0 endwhile_1
+<     load _X t0
+<     pushparam t0
+<     aload _Y t0
+<     pushparam t0
+<     aload static_link t0
+<     pushparam t0
+<     call program_FACT
+<     killparam
+<     killparam
+<     killparam
+<     wris " El factorial de "
+<     load _X t0
+<     wrii t0
+<     wris " es: "
+<     load _Y t0
+<     wrii t0
+<     wris ""
+<     wrln
+<     aload _X t0
+<     load _X t1
+<     iload 1 t2
+<     addi t1 t2 t1
+<     stor t1 t0
+<     ujmp while_1
+<   etiq endwhile_1
+<     stop
+< endprogram
+< 
+< subroutine program_FACT
+<   parameters
+<     _X
+<     _F
+<     static_link
+<   endparameters
+< 
+<   variables
+<     _AUX 4
+<   endvariables
+< 
+<     load _X t0
+<     iload 1 t1
+<     equi t0 t1 t0
+<     fjmp t0 else_1
+<     load _F t0
+<     iload 1 t1
+<     stor t1 t0
+<     ujmp endif_1
+<   etiq else_1
+<     load _X t0
+<     iload 1 t1
+<     subi t0 t1 t0
+<     pushparam t0
+<     aload _AUX t0
+<     pushparam t0
+<     load static_link t0
+<     pushparam t0
+<     call program_FACT
+<     killparam
+<     killparam
+<     killparam
+<     load _F t0
+<     load _AUX t1
+<     load _X t2
+<     muli t1 t2 t1
+<     stor t1 t0
+<   etiq endif_1
+<     retu
+< endsubroutine
+< 
+< Executing code:
+<  El factorial de 1 es: 1
+<  El factorial de 2 es: 2
+<  El factorial de 3 es: 6
+<  El factorial de 4 es: 24
+<  El factorial de 5 es: 120
+<  El factorial de 6 es: 720
+<  El factorial de 7 es: 5040
+<  El factorial de 8 es: 40320
+<  El factorial de 9 es: 362880
+---
+> L. 20: Basic type required in write.
+> L. 22: Basic type required in write.
+> L. 24: Basic type required in writeln.
+> There are errors: no code generated
+jp27
+98,192c98,100
+< Generating code:
+< program
+<   parameters
+<     static_link
+<   endparameters
+< 
+<   variables
+<     _X 4
+<     _Y 4
+<   endvariables
+< 
+<     aload _X t0
+<     iload 1 t1
+<     stor t1 t0
+<   etiq while_1
+<     load _X t0
+<     iload 10 t1
+<     lesi t0 t1 t0
+<     fjmp t0 endwhile_1
+<     wris " El factorial de "
+<     load _X t0
+<     wrii t0
+<     wris " es: "
+<     pushparam 0
+<     load _X t0
+<     pushparam t0
+<     aload static_link t0
+<     pushparam t0
+<     call program_FACT
+<     killparam
+<     killparam
+<     popparam t0
+<     wrii t0
+<     wrln
+<     aload _X t0
+<     load _X t1
+<     iload 1 t2
+<     addi t1 t2 t1
+<     stor t1 t0
+<     ujmp while_1
+<   etiq endwhile_1
+<     stop
+< endprogram
+< 
+< subroutine program_FACT
+<   parameters
+<     returnvalue
+<     _X
+<     static_link
+<   endparameters
+< 
+<   variables
+<     _F 4
+<   endvariables
+< 
+<     load _X t0
+<     iload 1 t1
+<     equi t0 t1 t0
+<     fjmp t0 else_1
+<     aload _F t0
+<     iload 1 t1
+<     stor t1 t0
+<     ujmp endif_1
+<   etiq else_1
+<     aload _F t0
+<     pushparam 0
+<     load _X t1
+<     iload 1 t2
+<     subi t1 t2 t1
+<     pushparam t1
+<     load static_link t1
+<     pushparam t1
+<     call program_FACT
+<     killparam
+<     killparam
+<     popparam t1
+<     load _X t2
+<     muli t1 t2 t1
+<     stor t1 t0
+<   etiq endif_1
+<     load _F t0
+<     stor t0 returnvalue
+<     retu
+< endsubroutine
+< 
+< Executing code:
+<  El factorial de 1 es: 1
+<  El factorial de 2 es: 2
+<  El factorial de 3 es: 6
+<  El factorial de 4 es: 24
+<  El factorial de 5 es: 120
+<  El factorial de 6 es: 720
+<  El factorial de 7 es: 5040
+<  El factorial de 8 es: 40320
+<  El factorial de 9 es: 362880
+---
+> L. 19: Basic type required in write.
+> L. 21: Basic type required in write.
+> There are errors: no code generated
+jp28
+579,1190c579,580
+< Generating code:
+< program
+<   parameters
+<     static_link
+<   endparameters
+< 
+<   variables
+<     _f 4
+<     _f1 4
+<     _f2 4
+<     _f3 4
+<     _m 4
+<     _r 4
+<     _aux 4
+<   endvariables
+< 
+<     aload _aux t0
+<     iload 6 t1
+<     stor t1 t0
+<     load _aux t0
+<     pushparam t0
+<     aload _aux t0
+<     pushparam t0
+<     aload _f t0
+<     pushparam t0
+<     aload static_link t0
+<     pushparam t0
+<     call program_fact
+<     killparam
+<     killparam
+<     killparam
+<     killparam
+<     load _f t0
+<     wrii t0
+<     wrln
+<     iload 8 t0
+<     pushparam t0
+<     aload _f1 t0
+<     pushparam t0
+<     aload _f2 t0
+<     pushparam t0
+<     aload _f3 t0
+<     pushparam t0
+<     iload 96 t0
+<     pushparam t0
+<     aload static_link t0
+<     pushparam t0
+<     call program_F
+<     killparam
+<     killparam
+<     killparam
+<     killparam
+<     killparam
+<     killparam
+<     load _f1 t0
+<     load _f3 t1
+<     equi t0 t1 t0
+<     fjmp t0 endif_1
+<     load _f1 t0
+<     wrii t0
+<     wris "  "
+<     load _f2 t0
+<     wrii t0
+<     wrln
+<   etiq endif_1
+<     iload 19 t0
+<     pushparam t0
+<     aload _m t0
+<     pushparam t0
+<     aload static_link t0
+<     pushparam t0
+<     call program_trad
+<     killparam
+<     killparam
+<     killparam
+<     load _m t0
+<     wrii t0
+<     wrln
+<     stop
+< endprogram
+< 
+< subroutine program_fact_mult
+<   parameters
+<     _a
+<     _b
+<     _p
+<     static_link
+<   endparameters
+< 
+<   variables
+<   endvariables
+< 
+<     load _a t0
+<     load t0 t0
+<     iload 0 t1
+<     equi t0 t1 t0
+<     fjmp t0 else_1
+<     load _p t0
+<     iload 0 t1
+<     stor t1 t0
+<     ujmp endif_1
+<   etiq else_1
+<     load _a t0
+<     load t0 t0
+<     iload 0 t1
+<     grti t0 t1 t0
+<     fjmp t0 endif_2
+<     load _a t0
+<     load _a t1
+<     load t1 t1
+<     iload 1 t2
+<     subi t1 t2 t1
+<     stor t1 t0
+<     load _a t0
+<     pushparam t0
+<     load _b t0
+<     pushparam t0
+<     load _p t0
+<     pushparam t0
+<     load static_link t0
+<     pushparam t0
+<     call program_fact_mult
+<     killparam
+<     killparam
+<     killparam
+<     killparam
+<     load _p t0
+<     load _p t1
+<     load t1 t1
+<     load _b t2
+<     load t2 t2
+<     addi t1 t2 t1
+<     stor t1 t0
+<   etiq endif_2
+<   etiq endif_1
+<     retu
+< endsubroutine
+< 
+< subroutine program_fact_gfact
+<   parameters
+<     _y
+<     _w
+<     _n
+<     _f
+<     static_link
+<   endparameters
+< 
+<   variables
+<     _p 4
+<     _aux 4
+<   endvariables
+< 
+<     load _y t0
+<     iload 0 t1
+<     equi t0 t1 t0
+<     fjmp t0 else_1
+<     load _f t0
+<     load _w t1
+<     stor t1 t0
+<     ujmp endif_1
+<   etiq else_1
+<     load _y t0
+<     iload 0 t1
+<     grti t0 t1 t0
+<     fjmp t0 endif_2
+<     aload _aux t0
+<     load _y t1
+<     stor t1 t0
+<     aload _y t0
+<     pushparam t0
+<     aload _w t0
+<     pushparam t0
+<     aload _p t0
+<     pushparam t0
+<     load static_link t0
+<     pushparam t0
+<     call program_fact_mult
+<     killparam
+<     killparam
+<     killparam
+<     killparam
+<     aload _y t0
+<     load _aux t1
+<     stor t1 t0
+<     load _y t0
+<     iload 1 t1
+<     subi t0 t1 t0
+<     pushparam t0
+<     load _p t0
+<     pushparam t0
+<     load _n t0
+<     pushparam t0
+<     load _f t0
+<     pushparam t0
+<     load static_link t0
+<     pushparam t0
+<     call program_fact_gfact
+<     killparam
+<     killparam
+<     killparam
+<     killparam
+<     killparam
+<   etiq endif_2
+<   etiq endif_1
+<     retu
+< endsubroutine
+< 
+< subroutine program_fact
+<   parameters
+<     _n
+<     _z
+<     _f
+<     static_link
+<   endparameters
+< 
+<   variables
+<   endvariables
+< 
+<     load _n t0
+<     pushparam t0
+<     iload 1 t0
+<     pushparam t0
+<     load _z t0
+<     load t0 t0
+<     pushparam t0
+<     load _f t0
+<     pushparam t0
+<     aload static_link t0
+<     pushparam t0
+<     call program_fact_gfact
+<     killparam
+<     killparam
+<     killparam
+<     killparam
+<     killparam
+<     retu
+< endsubroutine
+< 
+< subroutine program_F_fibon
+<   parameters
+<     _n
+<     _f
+<     _f1
+<     static_link
+<   endparameters
+< 
+<   variables
+<   endvariables
+< 
+<     load _n t0
+<     iload 1 t1
+<     equi t0 t1 t0
+<     fjmp t0 else_1
+<     load _f t0
+<     iload 1 t1
+<     stor t1 t0
+<     load _f1 t0
+<     iload 0 t1
+<     stor t1 t0
+<     ujmp endif_1
+<   etiq else_1
+<     load _n t0
+<     iload 1 t1
+<     grti t0 t1 t0
+<     fjmp t0 endif_2
+<     load _n t0
+<     iload 1 t1
+<     subi t0 t1 t0
+<     pushparam t0
+<     load _f t0
+<     pushparam t0
+<     load _f1 t0
+<     pushparam t0
+<     load static_link t0
+<     pushparam t0
+<     call program_F_fibon
+<     killparam
+<     killparam
+<     killparam
+<     killparam
+<     load static_link t0
+<     load t0 t0
+<     addi t0 offset(program:_aux) t0
+<     load _f t1
+<     load t1 t1
+<     stor t1 t0
+<     load _f t0
+<     load static_link t1
+<     load t1 t1
+<     addi t1 offset(program:_aux) t1
+<     load t1 t1
+<     load _f1 t2
+<     load t2 t2
+<     addi t1 t2 t1
+<     stor t1 t0
+<     load _f1 t0
+<     load static_link t1
+<     load t1 t1
+<     addi t1 offset(program:_aux) t1
+<     load t1 t1
+<     stor t1 t0
+<   etiq endif_2
+<   etiq endif_1
+<     retu
+< endsubroutine
+< 
+< subroutine program_F_fibon2
+<   parameters
+<     _n
+<     _f
+<     static_link
+<   endparameters
+< 
+<   variables
+<     _f1 4
+<     _f2 4
+<   endvariables
+< 
+<     load _n t0
+<     iload 0 t1
+<     equi t0 t1 t0
+<     fjmp t0 else_1
+<     load _f t0
+<     iload 0 t1
+<     stor t1 t0
+<     ujmp endif_1
+<   etiq else_1
+<     load _n t0
+<     iload 1 t1
+<     equi t0 t1 t0
+<     fjmp t0 else_2
+<     load _f t0
+<     iload 1 t1
+<     stor t1 t0
+<     ujmp endif_2
+<   etiq else_2
+<     load _n t0
+<     iload 1 t1
+<     grti t0 t1 t0
+<     fjmp t0 endif_3
+<     load _n t0
+<     iload 1 t1
+<     subi t0 t1 t0
+<     pushparam t0
+<     aload _f1 t0
+<     pushparam t0
+<     load static_link t0
+<     pushparam t0
+<     call program_F_fibon2
+<     killparam
+<     killparam
+<     killparam
+<     load _n t0
+<     iload 2 t1
+<     subi t0 t1 t0
+<     pushparam t0
+<     aload _f2 t0
+<     pushparam t0
+<     load static_link t0
+<     pushparam t0
+<     call program_F_fibon2
+<     killparam
+<     killparam
+<     killparam
+<     load _f t0
+<     load _f1 t1
+<     load _f2 t2
+<     addi t1 t2 t1
+<     stor t1 t0
+<   etiq endif_3
+<   etiq endif_2
+<   etiq endif_1
+<     retu
+< endsubroutine
+< 
+< subroutine program_F
+<   parameters
+<     _n
+<     _f1
+<     _f2
+<     _f3
+<     _f4
+<     static_link
+<   endparameters
+< 
+<   variables
+<   endvariables
+< 
+<     load _n t0
+<     pushparam t0
+<     load _f1 t0
+<     pushparam t0
+<     load _f2 t0
+<     pushparam t0
+<     aload static_link t0
+<     pushparam t0
+<     call program_F_fibon
+<     killparam
+<     killparam
+<     killparam
+<     killparam
+<     load _n t0
+<     pushparam t0
+<     aload _f4 t0
+<     pushparam t0
+<     aload static_link t0
+<     pushparam t0
+<     call program_F_fibon2
+<     killparam
+<     killparam
+<     killparam
+<     load _f3 t0
+<     load _f4 t1
+<     stor t1 t0
+<     retu
+< endsubroutine
+< 
+< subroutine program_trad_dividir
+<   parameters
+<     _a
+<     _b
+<     _c
+<     _r
+<     static_link
+<   endparameters
+< 
+<   variables
+<   endvariables
+< 
+<     load _a t0
+<     load _b t1
+<     lesi t0 t1 t0
+<     fjmp t0 else_1
+<     load _c t0
+<     iload 0 t1
+<     stor t1 t0
+<     load _r t0
+<     load _a t1
+<     stor t1 t0
+<     ujmp endif_1
+<   etiq else_1
+<     load _a t0
+<     pushparam t0
+<     iload 2 t0
+<     load _b t1
+<     muli t0 t1 t0
+<     pushparam t0
+<     load _c t0
+<     pushparam t0
+<     load _r t0
+<     pushparam t0
+<     load static_link t0
+<     pushparam t0
+<     call program_trad_dividir
+<     killparam
+<     killparam
+<     killparam
+<     killparam
+<     killparam
+<     load _r t0
+<     load t0 t0
+<     load _b t1
+<     lesi t0 t1 t0
+<     fjmp t0 else_2
+<     load _c t0
+<     iload 2 t1
+<     load _c t2
+<     load t2 t2
+<     muli t1 t2 t1
+<     stor t1 t0
+<     ujmp endif_2
+<   etiq else_2
+<     load _c t0
+<     iload 2 t1
+<     load _c t2
+<     load t2 t2
+<     muli t1 t2 t1
+<     iload 1 t2
+<     addi t1 t2 t1
+<     stor t1 t0
+<     load _r t0
+<     load _r t1
+<     load t1 t1
+<     load _b t2
+<     subi t1 t2 t1
+<     stor t1 t0
+<   etiq endif_2
+<   etiq endif_1
+<     retu
+< endsubroutine
+< 
+< subroutine program_trad_gtrad
+<   parameters
+<     _u
+<     _v
+<     _w
+<     _q
+<     _m
+<     static_link
+<   endparameters
+< 
+<   variables
+<   endvariables
+< 
+<     load _w t0
+<     iload 0 t1
+<     equi t0 t1 t0
+<     fjmp t0 else_1
+<     load _m t0
+<     load _u t1
+<     stor t1 t0
+<     ujmp endif_1
+<   etiq else_1
+<     load _w t0
+<     iload 0 t1
+<     grti t0 t1 t0
+<     fjmp t0 endif_2
+<     load _w t0
+<     pushparam t0
+<     iload 2 t0
+<     pushparam t0
+<     aload _q t0
+<     pushparam t0
+<     load static_link t0
+<     load t0 t0
+<     addi t0 offset(program:_r) t0
+<     pushparam t0
+<     load static_link t0
+<     pushparam t0
+<     call program_trad_dividir
+<     killparam
+<     killparam
+<     killparam
+<     killparam
+<     killparam
+<     load _u t0
+<     load _v t1
+<     load static_link t2
+<     load t2 t2
+<     addi t2 offset(program:_r) t2
+<     load t2 t2
+<     muli t1 t2 t1
+<     addi t0 t1 t0
+<     pushparam t0
+<     load _v t0
+<     iload 10 t1
+<     muli t0 t1 t0
+<     pushparam t0
+<     load _q t0
+<     pushparam t0
+<     load _q t0
+<     pushparam t0
+<     load _m t0
+<     pushparam t0
+<     load static_link t0
+<     pushparam t0
+<     call program_trad_gtrad
+<     killparam
+<     killparam
+<     killparam
+<     killparam
+<     killparam
+<     killparam
+<   etiq endif_2
+<   etiq endif_1
+<     retu
+< endsubroutine
+< 
+< subroutine program_trad
+<   parameters
+<     _n
+<     _m
+<     static_link
+<   endparameters
+< 
+<   variables
+<   endvariables
+< 
+<     load _m t0
+<     iload 0 t1
+<     stor t1 t0
+<     load _m t0
+<     load t0 t0
+<     pushparam t0
+<     load _m t0
+<     load t0 t0
+<     iload 1 t1
+<     addi t0 t1 t0
+<     pushparam t0
+<     load _n t0
+<     pushparam t0
+<     load _m t0
+<     load t0 t0
+<     pushparam t0
+<     load _m t0
+<     pushparam t0
+<     aload static_link t0
+<     pushparam t0
+<     call program_trad_gtrad
+<     killparam
+<     killparam
+<     killparam
+<     killparam
+<     killparam
+<     killparam
+<     retu
+< endsubroutine
+< 
+< Executing code:
+< 720
+< 21  13
+< 10011
+---
+> L. 99: Basic type required in write.
+> There are errors: no code generated
+jp29
+198,421c198,204
+< Generating code:
+< program
+<   parameters
+<     static_link
+<   endparameters
+< 
+<   variables
+<   endvariables
+< 
+<     iload 0 t0
+<     pushparam t0
+<     aload static_link t0
+<     pushparam t0
+<     call program_A2
+<     killparam
+<     killparam
+<     iload 0 t0
+<     pushparam t0
+<     aload static_link t0
+<     pushparam t0
+<     call program_A3
+<     killparam
+<     killparam
+<     stop
+< endprogram
+< 
+< subroutine program_A1
+<   parameters
+<     static_link
+<   endparameters
+< 
+<   variables
+<   endvariables
+< 
+<     wris ""
+<     wrln
+<     retu
+< endsubroutine
+< 
+< subroutine program_A2
+<   parameters
+<     _j
+<     static_link
+<   endparameters
+< 
+<   variables
+<   endvariables
+< 
+<     load _j t0
+<     iload 0 t1
+<     equi t0 t1 t0
+<     fjmp t0 else_1
+<     wris "soy A2 llamado por main "
+<     load static_link t0
+<     pushparam t0
+<     call program_A1
+<     killparam
+<     ujmp endif_1
+<   etiq else_1
+<     load _j t0
+<     iload 3 t1
+<     equi t0 t1 t0
+<     fjmp t0 else_2
+<     wris "soy A2 llamado por ABC "
+<     load static_link t0
+<     pushparam t0
+<     call program_A1
+<     killparam
+<     ujmp endif_2
+<   etiq else_2
+<     wris "soy A2 llamado por AB1 "
+<     load static_link t0
+<     pushparam t0
+<     call program_A1
+<     killparam
+<   etiq endif_2
+<   etiq endif_1
+<     retu
+< endsubroutine
+< 
+< subroutine program_A3_AB1_ABC
+<   parameters
+<     static_link
+<   endparameters
+< 
+<   variables
+<   endvariables
+< 
+<     iload 3 t0
+<     pushparam t0
+<     load static_link t0
+<     load t0 t0
+<     load t0 t0
+<     pushparam t0
+<     call program_A2
+<     killparam
+<     killparam
+<     iload 3 t0
+<     pushparam t0
+<     load static_link t0
+<     load t0 t0
+<     load t0 t0
+<     pushparam t0
+<     call program_A3
+<     killparam
+<     killparam
+<     load static_link t0
+<     load t0 t0
+<     addi t0 offset(program_A3:_i) t0
+<     load t0 t0
+<     iload 1 t1
+<     subi t0 t1 t0
+<     pushparam t0
+<     load static_link t0
+<     load t0 t0
+<     pushparam t0
+<     call program_A3_AB1
+<     killparam
+<     killparam
+<     retu
+< endsubroutine
+< 
+< subroutine program_A3_AB1
+<   parameters
+<     _k
+<     static_link
+<   endparameters
+< 
+<   variables
+<   endvariables
+< 
+<     load _k t0
+<     iload 1 t1
+<     mini t1 t1
+<     grti t0 t1 t0
+<     fjmp t0 else_1
+<     aload static_link t0
+<     pushparam t0
+<     call program_A3_AB1_ABC
+<     killparam
+<     ujmp endif_1
+<   etiq else_1
+<     iload 2 t0
+<     pushparam t0
+<     load static_link t0
+<     load t0 t0
+<     pushparam t0
+<     call program_A2
+<     killparam
+<     killparam
+<   etiq endif_1
+<     retu
+< endsubroutine
+< 
+< subroutine program_A3_AB2
+<   parameters
+<     static_link
+<   endparameters
+< 
+<   variables
+<   endvariables
+< 
+<     load static_link t0
+<     addi t0 offset(program_A3:_i) t0
+<     load t0 t0
+<     pushparam t0
+<     load static_link t0
+<     pushparam t0
+<     call program_A3_AB1
+<     killparam
+<     killparam
+<     retu
+< endsubroutine
+< 
+< subroutine program_A3
+<   parameters
+<     _i
+<     static_link
+<   endparameters
+< 
+<   variables
+<   endvariables
+< 
+<     load _i t0
+<     iload 0 t1
+<     equi t0 t1 t0
+<     fjmp t0 else_1
+<     wris "soy A3 llamado por main "
+<     load static_link t0
+<     pushparam t0
+<     call program_A1
+<     killparam
+<     aload static_link t0
+<     pushparam t0
+<     call program_A3_AB2
+<     killparam
+<     ujmp endif_1
+<   etiq else_1
+<     wris "soy A3 llamado por ABC "
+<     load static_link t0
+<     pushparam t0
+<     call program_A1
+<     killparam
+<   etiq endif_1
+<     retu
+< endsubroutine
+< 
+< subroutine program_A4
+<   parameters
+<     static_link
+<   endparameters
+< 
+<   variables
+<   endvariables
+< 
+<     retu
+< endsubroutine
+< 
+< Executing code:
+< soy A2 llamado por main 
+< soy A3 llamado por main 
+< soy A2 llamado por ABC 
+< soy A3 llamado por ABC 
+< soy A2 llamado por AB1 
+---
+> L. 4: Basic type required in writeln.
+> L. 8: Basic type required in write.
+> L. 10: Basic type required in write.
+> L. 11: Basic type required in write.
+> L. 35: Basic type required in write.
+> L. 37: Basic type required in write.
+> There are errors: no code generated
+jp30
+342,351d341
+<     load _X t0
+<     pushparam t0
+<     aload _Y t0
+<     pushparam t0
+<     aload static_link t0
+<     pushparam t0
+<     call program_F2
+<     killparam
+<     killparam
+<     killparam
+358,485d347
+< subroutine program_F2_F21_F211
+<   parameters
+<     _X
+<     _Y
+<     static_link
+<   endparameters
+< 
+<   variables
+<   endvariables
+< 
+<     retu
+< endsubroutine
+< 
+< subroutine program_F2_F21_F212
+<   parameters
+<     _X
+<     _Y
+<     static_link
+<   endparameters
+< 
+<   variables
+<   endvariables
+< 
+<     retu
+< endsubroutine
+< 
+< subroutine program_F2_F21
+<   parameters
+<     _X
+<     _Y
+<     static_link
+<   endparameters
+< 
+<   variables
+<   endvariables
+< 
+<     retu
+< endsubroutine
+< 
+< subroutine program_F2_F22_F221
+<   parameters
+<     _X
+<     _Y
+<     static_link
+<   endparameters
+< 
+<   variables
+<   endvariables
+< 
+<     retu
+< endsubroutine
+< 
+< subroutine program_F2_F22_F222
+<   parameters
+<     _X
+<     _Y
+<     static_link
+<   endparameters
+< 
+<   variables
+<   endvariables
+< 
+<     load _Y t0
+<     load _Y t1
+<     load t1 t1
+<     iload 1 t2
+<     subi t1 t2 t1
+<     stor t1 t0
+<     iload 0 t0
+<     load _Y t1
+<     load t1 t1
+<     lesi t0 t1 t0
+<     fjmp t0 else_1
+<     load _X t0
+<     pushparam t0
+<     load _Y t0
+<     pushparam t0
+<     load static_link t0
+<     load t0 t0
+<     pushparam t0
+<     call program_F2_F22
+<     killparam
+<     killparam
+<     killparam
+<     ujmp endif_1
+<   etiq else_1
+<     aload _X t0
+<     iload 1 t1
+<     stor t1 t0
+<   etiq endif_1
+<     retu
+< endsubroutine
+< 
+< subroutine program_F2_F22
+<   parameters
+<     _X
+<     _Y
+<     static_link
+<   endparameters
+< 
+<   variables
+<   endvariables
+< 
+<     iload 0 t0
+<     load _X t1
+<     lesi t0 t1 t0
+<     fjmp t0 else_1
+<     load _X t0
+<     iload 1 t1
+<     subi t0 t1 t0
+<     pushparam t0
+<     load _Y t0
+<     pushparam t0
+<     aload static_link t0
+<     pushparam t0
+<     call program_F2_F22_F222
+<     killparam
+<     killparam
+<     killparam
+<     ujmp endif_1
+<   etiq else_1
+<     aload _X t0
+<     iload 2 t1
+<     stor t1 t0
+<   etiq endif_1
+<     retu
+< endsubroutine
+< 
+488,568d349
+<     _X
+<     _Y
+<     static_link
+<   endparameters
+< 
+<   variables
+<   endvariables
+< 
+<     load _X t0
+<     pushparam t0
+<     load _Y t0
+<     pushparam t0
+<     load static_link t0
+<     pushparam t0
+<     call program_F1
+<     killparam
+<     killparam
+<     killparam
+<     retu
+< endsubroutine
+< 
+< subroutine program_F1_F11_F111
+<   parameters
+<     _X
+<     _Y
+<     static_link
+<   endparameters
+< 
+<   variables
+<   endvariables
+< 
+<     iload 111 t0
+<     wrii t0
+<     retu
+< endsubroutine
+< 
+< subroutine program_F1_F11_F112
+<   parameters
+<     _X
+<     _Y
+<     static_link
+<   endparameters
+< 
+<   variables
+<   endvariables
+< 
+<     iload 112 t0
+<     wrii t0
+<     retu
+< endsubroutine
+< 
+< subroutine program_F1_F11
+<   parameters
+<     _X
+<     _Y
+<     static_link
+<   endparameters
+< 
+<   variables
+<   endvariables
+< 
+<     iload 11 t0
+<     wrii t0
+<     load _X t0
+<     pushparam t0
+<     load _Y t0
+<     pushparam t0
+<     load static_link t0
+<     pushparam t0
+<     call program_F1_F12
+<     killparam
+<     killparam
+<     killparam
+<     retu
+< endsubroutine
+< 
+< subroutine program_F1_F12_F121
+<   parameters
+<     _X
+<     _Y
+<     static_link
+574,606d354
+<     iload 121 t0
+<     wrii t0
+<     retu
+< endsubroutine
+< 
+< subroutine program_F1_F12_F122
+<   parameters
+<     _X
+<     _Y
+<     static_link
+<   endparameters
+< 
+<   variables
+<   endvariables
+< 
+<     iload 122 t0
+<     wrii t0
+<     retu
+< endsubroutine
+< 
+< subroutine program_F1_F12
+<   parameters
+<     _X
+<     _Y
+<     static_link
+<   endparameters
+< 
+<   variables
+<   endvariables
+< 
+<     iload 12 t0
+<     wrii t0
+<     retu
+611,613d358
+<     _X
+<     _Y
+<     static_link
+619,629d363
+<     load _X t0
+<     pushparam t0
+<     load _Y t0
+<     pushparam t0
+<     aload static_link t0
+<     pushparam t0
+<     call program_F1_F11
+<     killparam
+<     killparam
+<     killparam
+<     retu
+633c367
+< 11122
+---
+> 2
+jp31
+143,287c143,145
+< Generating code:
+< program
+<   parameters
+<     static_link
+<   endparameters
+< 
+<   variables
+<     _n 4
+<   endvariables
+< 
+<     aload _n t0
+<     iload 1 t1
+<     stor t1 t0
+<   etiq while_1
+<     load _n t0
+<     iload 10 t1
+<     lesi t0 t1 t0
+<     fjmp t0 endwhile_1
+<     wris "Fibonacci("
+<     load _n t0
+<     wrii t0
+<     wris ")="
+<     pushparam 0
+<     load _n t0
+<     pushparam t0
+<     aload static_link t0
+<     pushparam t0
+<     call program_fibon
+<     killparam
+<     killparam
+<     popparam t0
+<     wrii t0
+<     wrln
+<     aload _n t0
+<     load _n t1
+<     iload 1 t2
+<     addi t1 t2 t1
+<     stor t1 t0
+<     ujmp while_1
+<   etiq endwhile_1
+<     stop
+< endprogram
+< 
+< subroutine program_fibon_recfibon
+<   parameters
+<     _n
+<     _n1
+<     _n2
+<     static_link
+<   endparameters
+< 
+<   variables
+<     _aux 4
+<   endvariables
+< 
+<     load _n t0
+<     iload 0 t1
+<     equi t0 t1 t0
+<     load _n t1
+<     iload 1 t2
+<     equi t1 t2 t1
+<     loor t0 t1 t0
+<     fjmp t0 else_1
+<     load _n1 t0
+<     iload 1 t1
+<     stor t1 t0
+<     load _n2 t0
+<     iload 1 t1
+<     stor t1 t0
+<     ujmp endif_1
+<   etiq else_1
+<     load _n t0
+<     iload 1 t1
+<     subi t0 t1 t0
+<     pushparam t0
+<     load _n1 t0
+<     pushparam t0
+<     load _n2 t0
+<     pushparam t0
+<     load static_link t0
+<     pushparam t0
+<     call program_fibon_recfibon
+<     killparam
+<     killparam
+<     killparam
+<     killparam
+<     aload _aux t0
+<     load _n1 t1
+<     load t1 t1
+<     stor t1 t0
+<     load _n1 t0
+<     load _n2 t1
+<     load t1 t1
+<     stor t1 t0
+<     load _n2 t0
+<     load _aux t1
+<     load _n2 t2
+<     load t2 t2
+<     addi t1 t2 t1
+<     stor t1 t0
+<   etiq endif_1
+<     retu
+< endsubroutine
+< 
+< subroutine program_fibon
+<   parameters
+<     returnvalue
+<     _n
+<     static_link
+<   endparameters
+< 
+<   variables
+<     _retvalue 4
+<     _n1 4
+<     _n2 4
+<   endvariables
+< 
+<     load _n t0
+<     pushparam t0
+<     aload _n1 t0
+<     pushparam t0
+<     aload _n2 t0
+<     pushparam t0
+<     aload static_link t0
+<     pushparam t0
+<     call program_fibon_recfibon
+<     killparam
+<     killparam
+<     killparam
+<     killparam
+<     load _n2 t0
+<     stor t0 returnvalue
+<     retu
+< endsubroutine
+< 
+< Executing code:
+< Fibonacci(1)=1
+< Fibonacci(2)=2
+< Fibonacci(3)=3
+< Fibonacci(4)=5
+< Fibonacci(5)=8
+< Fibonacci(6)=13
+< Fibonacci(7)=21
+< Fibonacci(8)=34
+< Fibonacci(9)=55
+---
+> L. 26: Basic type required in write.
+> L. 26: Basic type required in write.
+> There are errors: no code generated
+jp32
+267a268,273
+> BIG PROBLEM! No case defined for kind [
+> BIG PROBLEM! No case defined for kind [
+> BIG PROBLEM! No case defined for kind [
+> BIG PROBLEM! No case defined for kind [
+> BIG PROBLEM! No case defined for kind [
+> BIG PROBLEM! No case defined for kind [
+277,281d282
+<     aload _S t0
+<     addi t0 4 t0
+<     iload 3 t1
+<     muli t1 4 t1
+<     addi t0 t1 t0
+284,288d284
+<     aload _S t0
+<     addi t0 4 t0
+<     iload 4 t1
+<     muli t1 4 t1
+<     addi t0 t1 t0
+292,298d287
+<     pushparam t0
+<     aload static_link t0
+<     pushparam t0
+<     call program_P2
+<     killparam
+<     killparam
+<     aload _S t0
+303,307d291
+<     aload _S t0
+<     addi t0 4 t0
+<     iload 3 t1
+<     muli t1 4 t1
+<     addi t0 t1 t0
+311,315d294
+<     aload _S t0
+<     addi t0 4 t0
+<     iload 4 t1
+<     muli t1 4 t1
+<     addi t0 t1 t0
+319,323d297
+<     aload _S t0
+<     addi t0 4 t0
+<     iload 5 t1
+<     muli t1 4 t1
+<     addi t0 t1 t0
+327,331d300
+<     aload _S t0
+<     addi t0 4 t0
+<     iload 6 t1
+<     muli t1 4 t1
+<     addi t0 t1 t0
+340,341d308
+<     _A
+<     static_link
+347,353d313
+<     load _A t0
+<     iload 3 t1
+<     muli t1 4 t1
+<     addi t0 t1 t0
+<     iload 5 t1
+<     stor t1 t0
+<     retu
+358,359d317
+<     _S2
+<     static_link
+363d320
+<     aux_space 80
+366,422d322
+<     load _S2 t0
+<     addi t0 4 t0
+<     aload aux_space t1
+<     addi t1 0 t1
+<     pushparam t1
+<     load _S2 t2
+<     addi t2 4 t2
+<     pushparam t2
+<     load static_link t2
+<     pushparam t2
+<     call program_F1
+<     killparam
+<     killparam
+<     killparam
+<     copy t1 t0 40
+<     load _S2 t0
+<     addi t0 4 t0
+<     aload aux_space t1
+<     addi t1 0 t1
+<     pushparam t1
+<     load _S2 t3
+<     addi t3 4 t3
+<     aload aux_space t2
+<     addi t2 40 t2
+<     copy t3 t2 40
+<     pushparam t2
+<     load static_link t2
+<     pushparam t2
+<     call program_F2
+<     killparam
+<     killparam
+<     killparam
+<     copy t1 t0 40
+<     load _S2 t0
+<     addi t0 0 t0
+<     iload 3 t1
+<     stor t1 t0
+<     load _S2 t0
+<     addi t0 4 t0
+<     pushparam t0
+<     load static_link t0
+<     pushparam t0
+<     call program_P1
+<     killparam
+<     killparam
+<     load _S2 t1
+<     addi t1 4 t1
+<     aload aux_space t0
+<     addi t0 0 t0
+<     copy t1 t0 40
+<     pushparam t0
+<     load static_link t0
+<     pushparam t0
+<     call program_P3
+<     killparam
+<     killparam
+<     retu
+427,428d326
+<     _A2
+<     static_link
+434,440d331
+<     load _A2 t0
+<     iload 4 t1
+<     muli t1 4 t1
+<     addi t0 t1 t0
+<     iload 5 t1
+<     stor t1 t0
+<     retu
+445,447d335
+<     returnvalue
+<     _A
+<     static_link
+451d338
+<     _B 40
+454,476d340
+<     aload _B t0
+<     load _A t1
+<     copy t1 t0 40
+<     aload _B t0
+<     iload 5 t1
+<     muli t1 4 t1
+<     addi t0 t1 t0
+<     aload _B t1
+<     iload 3 t2
+<     muli t2 4 t2
+<     addi t1 t2 t1
+<     load t1 t1
+<     aload _B t2
+<     iload 4 t3
+<     muli t3 4 t3
+<     addi t2 t3 t2
+<     load t2 t2
+<     addi t1 t2 t1
+<     stor t1 t0
+<     aload _B t1
+<     load returnvalue t0
+<     copy t1 t0 40
+<     retu
+481,483d344
+<     returnvalue
+<     _A
+<     static_link
+487d347
+<     _B 40
+490,518d349
+<     aload _B t0
+<     load _A t1
+<     copy t1 t0 40
+<     aload _B t0
+<     iload 6 t1
+<     muli t1 4 t1
+<     addi t0 t1 t0
+<     aload _B t1
+<     iload 3 t2
+<     muli t2 4 t2
+<     addi t1 t2 t1
+<     load t1 t1
+<     aload _B t2
+<     iload 4 t3
+<     muli t3 4 t3
+<     addi t2 t3 t2
+<     load t2 t2
+<     addi t1 t2 t1
+<     aload _B t2
+<     iload 5 t3
+<     muli t3 4 t3
+<     addi t2 t3 t2
+<     load t2 t2
+<     addi t1 t2 t1
+<     stor t1 t0
+<     aload _B t1
+<     load returnvalue t0
+<     copy t1 t0 40
+<     retu
+522,523d352
+< 3
+< 5
+525,526c354,357
+< 3
+< 6
+---
+> 2
+> 2
+> 2
+> 2
+jp33
+133a134,137
+> BIG PROBLEM! No case defined for kind -
+> BIG PROBLEM! No case defined for kind [
+> BIG PROBLEM! No case defined for kind [
+> BIG PROBLEM! No case defined for kind (
+142d145
+<     aux_space 88
+146,147d148
+<     iload 1 t1
+<     mini t1 t1
+149,156d149
+<     aload _S t0
+<     iload 0 t1
+<     muli t1 44 t1
+<     addi t0 t1 t0
+<     addi t0 4 t0
+<     iload 0 t1
+<     muli t1 4 t1
+<     addi t0 t1 t0
+159,166d151
+<     aload _S t0
+<     iload 1 t1
+<     muli t1 44 t1
+<     addi t0 t1 t0
+<     addi t0 4 t0
+<     iload 1 t1
+<     muli t1 4 t1
+<     addi t0 t1 t0
+170,197d154
+<     pushparam 0
+<     aload aux_space t1
+<     addi t1 0 t1
+<     pushparam t1
+<     aload static_link t2
+<     pushparam t2
+<     call program_F
+<     killparam
+<     killparam
+<     addi t1 4 t1
+<     pushparam t1
+<     aload aux_space t1
+<     addi t1 44 t1
+<     pushparam t1
+<     aload static_link t2
+<     pushparam t2
+<     call program_F
+<     killparam
+<     killparam
+<     addi t1 4 t1
+<     pushparam t1
+<     aload static_link t1
+<     pushparam t1
+<     call program_G
+<     killparam
+<     killparam
+<     killparam
+<     popparam t1
+207,208d163
+<     returnvalue
+<     static_link
+214,231d168
+<     load static_link t0
+<     addi t0 offset(program:_X) t0
+<     load static_link t1
+<     addi t1 offset(program:_X) t1
+<     load t1 t1
+<     iload 1 t2
+<     addi t1 t2 t1
+<     stor t1 t0
+<     load static_link t1
+<     addi t1 offset(program:_S) t1
+<     load static_link t2
+<     addi t2 offset(program:_X) t2
+<     load t2 t2
+<     muli t2 44 t2
+<     addi t1 t2 t1
+<     load returnvalue t0
+<     copy t1 t0 44
+<     retu
+236,239d172
+<     returnvalue
+<     _A0
+<     _A1
+<     static_link
+245,257d177
+<     load _A0 t0
+<     iload 0 t1
+<     muli t1 4 t1
+<     addi t0 t1 t0
+<     load t0 t0
+<     load _A1 t1
+<     iload 1 t2
+<     muli t2 4 t2
+<     addi t1 t2 t1
+<     load t1 t1
+<     addi t0 t1 t0
+<     stor t0 returnvalue
+<     retu
+261c181
+< 8
+---
+> 5

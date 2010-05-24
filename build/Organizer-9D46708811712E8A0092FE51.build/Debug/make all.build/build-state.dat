@@ -1,0 +1,27 @@
+Tmake all
+v7
+r0
+t292630180.312515
+cCheck dependencies
+cExternalBuildToolExecution "make all"
+
+N/var/folders/nv/nvBvjrYREnu1zto2ByaypE+++TI/-Tmp-/9D46708811712E8A0092FE51
+c000000004BC0F7240000000000000015
+t1270937380
+s21
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies292630180#292630180#0(0"0(0#1#0"4300885448#0"0#
+
+CExternalBuildToolExecution "make all"
+s292630180.247803
+e292630180.312464
+r0
+xExternalBuildToolExecution
+xmake all
+oantlr -gt cl.g
+omake: antlr: No such file or directory
+omake: *** [cl.c] Error 1
+lSLF07#2@23"Run external build tool292630180#292630180#0(79"antlr -gt cl.gmake: antlr: No such file or directorymake: *** [cl.c] Error 13(13@15"antlr -gt cl.g292630180#0#15#0(1@0"0(4@38"Make: antlr: No such file or directory292630180#15#39#0(1@0"0(13@25"make: *** [cl.c] Error 1292630180#54#25#0(1@0"0(0#0#0"4300885448#147"    cd /Users/mmutsuda/Documents/FIB/CL/Practica    setenv ACTION     /var/folders/nv/nvBvjrYREnu1zto2ByaypE+++TI/-Tmp-/9D46708811712E8A0092FE512#
+

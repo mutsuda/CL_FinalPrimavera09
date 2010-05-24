@@ -1,0 +1,357 @@
+<<
+/* parser.dlg -- DLG Description of scanner
+ *
+ * Generated from: cl.g
+ *
+ * Terence Parr, Will Cohen, and Hank Dietz: 1989-2001
+ * Purdue University Electrical Engineering
+ * With AHPCRC, University of Minnesota
+ * ANTLR Version 1.33MR33
+ */
+
+#define ANTLR_VERSION	13333
+#include "pcctscfg.h"
+#include "pccts_stdio.h"
+
+#include <string>
+#include <iostream>
+#include <map>
+#include <list>
+#include <vector>
+#include <fstream>
+
+using namespace std;
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "ptype.hh"
+#include "symtab.hh"
+#include "codegest.hh"
+
+/// struct to contain information about a token.
+typedef struct {
+  string kind;
+  string text;
+  int line;
+} Attrib;
+
+/// function called by the scanner when a new token is found
+/// Predeclared here, definition below.
+void zzcr_attr(Attrib *attr,int type,char *text);
+
+/// Include AST node fields declaration
+#include "myASTnode.hh"
+
+/// Macro called by the parser when a new AST node is to be created
+/// createASTnode function doing the actual job is defined below.
+#define zzcr_ast(as,attr,tttype,textt) as=createASTnode(attr,tttype,textt);
+AST* createASTnode(Attrib* attr, int ttype, char *textt);
+#include "antlr.h"
+#include "ast.h"
+#include "tokens.h"
+#include "dlgdef.h"
+LOOKAHEAD
+
+void
+#ifdef __USE_PROTOS
+zzerraction(void)
+#else
+zzerraction()
+#endif
+{
+	(*zzerr)("invalid token");
+	zzadvance();
+	zzskip();
+}
+>>
+
+
+%%START
+
+@
+	<<
+		NLA = INPUTEND;
+	>>
+
+\<\<
+	<<
+		NLA = OPENANGL;
+	>>
+
+\>\>
+	<<
+		NLA = CLOSEANGL;
+	>>
+
+PROGRAM
+	<<
+		NLA = PROGRAM;
+	>>
+
+ENDPROGRAM
+	<<
+		NLA = ENDPROGRAM;
+	>>
+
+PROCEDURE
+	<<
+		NLA = PROCEDURE;
+	>>
+
+ENDPROCEDURE
+	<<
+		NLA = ENDPROCEDURE;
+	>>
+
+FUNCTION
+	<<
+		NLA = FUNCTION;
+	>>
+
+ENDFUNCTION
+	<<
+		NLA = ENDFUNCTION;
+	>>
+
+RETURN
+	<<
+		NLA = RETURN;
+	>>
+
+VARS
+	<<
+		NLA = VARS;
+	>>
+
+ENDVARS
+	<<
+		NLA = ENDVARS;
+	>>
+
+VAL
+	<<
+		NLA = VAL;
+	>>
+
+REF
+	<<
+		NLA = REF;
+	>>
+
+INT
+	<<
+		NLA = INT;
+	>>
+
+STRUCT
+	<<
+		NLA = STRUCT;
+	>>
+
+ENDSTRUCT
+	<<
+		NLA = ENDSTRUCT;
+	>>
+
+BOOL
+	<<
+		NLA = BOOL;
+	>>
+
+TRUE
+	<<
+		NLA = CIERTO;
+	>>
+
+FALSE
+	<<
+		NLA = FALSO;
+	>>
+
+ARRAY
+	<<
+		NLA = ARRAY;
+	>>
+
+OF
+	<<
+		NLA = OF;
+	>>
+
+WRITELN
+	<<
+		NLA = WRITELN;
+	>>
+
+WRITE
+	<<
+		NLA = WRITE;
+	>>
+
+READ
+	<<
+		NLA = READ;
+	>>
+
+IF
+	<<
+		NLA = IF;
+	>>
+
+THEN
+	<<
+		NLA = THEN;
+	>>
+
+ELSE
+	<<
+		NLA = ELSE;
+	>>
+
+ENDIF
+	<<
+		NLA = ENDIF;
+	>>
+
+WHILE
+	<<
+		NLA = WHILE;
+	>>
+
+DO
+	<<
+		NLA = DO;
+	>>
+
+ENDWHILE
+	<<
+		NLA = ENDWHILE;
+	>>
+
+>
+	<<
+		NLA = GT;
+	>>
+
+=
+	<<
+		NLA = EQ;
+	>>
+
+<
+	<<
+		NLA = LT;
+	>>
+
+AND
+	<<
+		NLA = AND;
+	>>
+
+OR
+	<<
+		NLA = OR;
+	>>
+
+NOT
+	<<
+		NLA = NOT;
+	>>
+
+\/
+	<<
+		NLA = DIV;
+	>>
+
+\-
+	<<
+		NLA = MINUS;
+	>>
+
+\*
+	<<
+		NLA = TIMES;
+	>>
+
+\+
+	<<
+		NLA = PLUS;
+	>>
+
+\(
+	<<
+		NLA = OPENPAR;
+	>>
+
+\)
+	<<
+		NLA = CLOSEPAR;
+	>>
+
+\[
+	<<
+		NLA = OPENKEY;
+	>>
+
+\]
+	<<
+		NLA = CLOSEKEY;
+	>>
+
+:=
+	<<
+		NLA = ASIG;
+	>>
+
+.
+	<<
+		NLA = DOT;
+	>>
+
+,
+	<<
+		NLA = COMMA;
+	>>
+
+[a-zA-Z][a-zA-Z0-9]*
+	<<
+		NLA = IDENT;
+	>>
+
+[0-9]+
+	<<
+		NLA = INTCONST;
+	>>
+
+\"~[\n\"]*\"
+	<<
+		NLA = STRING;
+	>>
+
+//~[\n]*
+	<<
+		NLA = COMMENT;
+    printf("%s",zzlextext); zzskip();   
+	>>
+
+[\ \t]+
+	<<
+		NLA = WHITESPACE;
+    printf("%s",zzlextext); zzskip();   
+	>>
+
+\n
+	<<
+		NLA = NEWLINE;
+    zzline++; printf("\n%3d: ", zzline); zzskip();   
+	>>
+
+~[]
+	<<
+		NLA = LEXICALERROR;
+    printf("Lexical error: symbol '%s' ignored!\n", zzlextext);
+    zzLexErrCount++;
+    zzskip();   
+	>>
+
+%%
